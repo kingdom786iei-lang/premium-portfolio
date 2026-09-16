@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arcadia — Dubai Luxury Real Estate</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+html{scroll-behavior:smooth}
+body{background:#f7f6f2;color:#171717}
+.property{transition:.3s}
+.property:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.modal{transition:.25s}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-xl border-b border-black/10">
+<div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+
+<a href="#" class="text-2xl font-bold tracking-tight">
+ARCADIA<span class="text-amber-600">.</span>
+</a>
+
+<div class="hidden md:flex gap-8 text-sm text-gray-600">
+<a href="#properties" class="hover:text-black">Properties</a>
+<a href="#areas" class="hover:text-black">Areas</a>
+<a href="#services" class="hover:text-black">Services</a>
+<a href="#contact" class="hover:text-black">Contact</a>
+</div>
+
+<a href="#contact"
+class="bg-black text-white px-5 py-3 rounded-full text-sm font-semibold">
+Book Consultation
+</a>
+
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[90vh] flex items-end overflow-hidden">
+
+<img
+src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=90"
+class="absolute inset-0 w-full h-full object-cover">
+
+<div class="absolute inset-0 bg-black/45"></div>
+
+<div class="relative z-10 max-w-7xl mx-auto px-5 pb-16 w-full text-white">
+
+<p class="uppercase tracking-[.3em] text-xs text-gray-200">
+Dubai Luxury Real Estate
+</p>
+
+<h1 class="text-5xl md:text-7xl font-semibold max-w-4xl mt-5 leading-tight">
+Find a home worthy of your ambition.
+</h1>
+
+<p class="max-w-xl text-gray-200 mt-5 text-lg">
+Exceptional apartments, villas and penthouses in Dubai's most
+sought-after destinations.
+</p>
+
+<!-- SEARCH -->
+<div class="mt-9 bg-white text-black rounded-2xl p-4 max-w-5xl">
+
+<div class="grid md:grid-cols-4 gap-3">
+
+<select id="searchArea"
+class="border rounded-xl px-4 py-3 bg-white">
+<option value="all">All Areas</option>
+<option value="Dubai Marina">Dubai Marina</option>
+<option value="Downtown Dubai">Downtown Dubai</option>
+<option value="Palm Jumeirah">Palm Jumeirah</option>
+<option value="Jumeirah">Jumeirah</option>
+</select>
+
+<select id="searchType"
+class="border rounded-xl px-4 py-3 bg-white">
+<option value="all">All Property Types</option>
+<option value="Apartment">Apartment</option>
+<option value="Villa">Villa</option>
+<option value="Penthouse">Penthouse</option>
+</select>
+
+<select id="searchBeds"
+class="border rounded-xl px-4 py-3 bg-white">
+<option value="all">Bedrooms</option>
+<option value="1">1+ Bedroom</option>
+<option value="2">2+ Bedrooms</option>
+<option value="3">3+ Bedrooms</option>
+<option value="4">4+ Bedrooms</option>
+</select>
+
+<button onclick="applyFilters()"
+class="bg-black text-white rounded-xl px-5 py-3 font-semibold">
+Search Properties
+</button>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- INTRO -->
+<section class="max-w-7xl mx-auto px-5 py-24">
+
+<div class="grid md:grid-cols-2 gap-14 items-end">
+
+<div>
+<p class="text-amber-600 text-xs uppercase tracking-[.3em] font-semibold">
+The Arcadia Difference
+</p>
+
+<h2 class="text-4xl md:text-5xl font-semibold mt-4 leading-tight">
+Property search, refined.
+</h2>
+</div>
+
+<p class="text-gray-600 leading-relaxed max-w-xl">
+We combine local Dubai expertise with a highly curated collection
+of luxury properties. From first viewing to final handover,
+our advisors guide you through every step.
+</p>
+
+</div>
+
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties" class="max-w-7xl mx-auto px-5 pb-24">
+
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-10">
+
+<div>
+<p class="text-xs uppercase tracking-[.3em] text-gray-500">
+Featured Collection
+</p>
+
+<h2 class="text-4xl font-semibold mt-3">
+Exceptional residences.
+</h2>
+</div>
+
+<div class="text-sm text-gray-500">
+<span id="resultCount">6</span> properties
+</div>
+
+</div>
+
+<div id="propertiesGrid"
+class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+</div>
+
+</section>
+
+<!-- AREAS -->
+<section id="areas" class="bg-black text-white py-24 px-5">
+
+<div class="max-w-7xl mx-auto">
+
+<p class="text-amber-500 text-xs uppercase tracking-[.3em]">
+Explore Dubai
+</p>
+
+<h2 class="text-4xl md:text-5xl font-semibold mt-4">
+Live where it matters.
+</h2>
+
+<div class="grid md:grid-cols-4 gap-4 mt-12">
+
+<div class="p-7 rounded-2xl border border-white/10 bg-white/5">
+<h3 class="text-xl font-semibold">Downtown Dubai</h3>
+<p class="text-gray-400 text-sm mt-3">
+Iconic skyline, Burj Khalifa and world-class lifestyle.
+</p>
+</div>
+
+<div class="p-7 rounded-2xl border border-white/10 bg-white/5">
+<h3 class="text-xl font-semibold">Palm Jumeirah</h3>
+<p class="text-gray-400 text-sm mt-3">
+Private beachfront living and extraordinary views.
+</p>
+</div>
+
+<div class="p-7 rounded-2xl border border-white/10 bg-white/5">
+<h3 class="text-xl font-semibold">Dubai Marina</h3>
+<p class="text-gray-400 text-sm mt-3">
+Waterfront residences surrounded by vibrant city life.
+</p>
+</div>
+
+<div class="p-7 rounded-2xl border border-white/10 bg-white/5">
+<h3 class="text-xl font-semibold">Jumeirah</h3>
+<p class="text-gray-400 text-sm mt-3">
+Exclusive villas, beaches and established communities.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 px-5">
+
+<div class="max-w-7xl mx-auto">
+
+<div class="max-w-2xl">
+<p class="text-amber-600 text-xs uppercase tracking-[.3em] font-semibold">
+Our Services
+</p>
+
+<h2 class="text-4xl md:text-5xl font-semibold mt-4">
+Beyond the property.
+</h2>
+</div>
+
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+
+<div class="p-8 bg-white rounded-2xl border border-black/10">
+<span class="text-3xl">⌂</span>
+<h3 class="text-xl font-semibold mt-6">Property Advisory</h3>
+<p class="text-gray-600 text-sm mt-3 leading-relaxed">
+Personalized guidance based on your lifestyle,
+investment objectives and preferred locations.
+</p>
+</div>
+
+<div class="p-8 bg-white rounded-2xl border border-black/10">
+<span class="text-3xl">◆</span>
+<h3 class="text-xl font-semibold mt-6">Investment Strategy</h3>
+<p class="text-gray-600 text-sm mt-3 leading-relaxed">
+Market insights and property analysis to help you
+evaluate Dubai real estate opportunities.
+</p>
+</div>
+
+<div class="p-8 bg-white rounded-2xl border border-black/10">
+<span class="text-3xl">✓</span>
+<h3 class="text-xl font-semibold mt-6">Complete Support</h3>
+<p class="text-gray-600 text-sm mt-3 leading-relaxed">
+From viewing appointments to paperwork and handover,
+our team stays with you throughout the process.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-[#e9e5dc] py-24 px-5">
+
+<div class="max-w-5xl mx-auto text-center">
+
+<p class="text-amber-700 text-xs uppercase tracking-[.3em] font-semibold">
+Private Consultation
+</p>
+
+<h2 class="text-4xl md:text-6xl font-semibold mt-4">
+Let's find your Dubai address.
+</h2>
+
+<p class="text-gray-600 max-w-xl mx-auto mt-5">
+Tell us what you're looking for and one of our property advisors
+will contact you.
+</p>
+
+<form onsubmit="submitForm(event)"
+class="max-w-xl mx-auto mt-10 grid gap-4 text-left">
+
+<input id="name"
+required
+placeholder="Your name"
+class="w-full px-5 py-4 rounded-xl border border-black/10 bg-white outline-none">
+
+<input id="email"
+required
+type="email"
+placeholder="Email address"
+class="w-full px-5 py-4 rounded-xl border border-black/10 bg-white outline-none">
+
+<select id="interest"
+class="w-full px-5 py-4 rounded-xl border border-black/10 bg-white">
+<option>Buying a property</option>
+<option>Property investment</option>
+<option>Luxury rental</option>
+<option>General consultation</option>
+</select>
+
+<button
+class="bg-black text-white py-4 rounded-xl font-semibold hover:bg-gray-800 transition">
+Request Consultation
+</button>
+
+</form>
+
+<p id="formMessage" class="mt-5 text-green-700 font-medium"></p>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white px-5 py-10">
+
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-4">
+
+<div>
+<div class="text-xl font-bold">
+ARCADIA<span class="text-amber-500">.</span>
+</div>
+<p class="text-gray-500 text-sm mt-2">
+Dubai Luxury Real Estate
+</p>
+</div>
+
+<p class="text-gray-500 text-sm">
+© 2026 Arcadia. All rights reserved.
+</p>
+
+</div>
+</footer>
+
+<!-- MODAL -->
+<div id="modal"
+class="fixed inset-0 bg-black/60 z-[100] hidden items-center justify-center p-5">
+
+<div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-auto">
+
+<div id="modalContent"></div>
+
+</div>
+</div>
+
+<script>
+
+const properties=[
+
+{
+id:1,
+title:"Skyline Residence",
+area:"Downtown Dubai",
+type:"Apartment",
+beds:2,
+price:1850000,
+image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+desc:"Contemporary residence with panoramic city views."
+},
+
+{
+id:2,
+title:"Palm Horizon Villa",
+area:"Palm Jumeirah",
+type:"Villa",
+beds:4,
+price:7200000,
+image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
+desc:"Private luxury villa moments from the beach."
+},
+
+{
+id:3,
+title:"Marina View",
+area:"Dubai Marina",
+type:"Apartment",
+beds:1,
+price:1250000,
+image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85",
+desc:"Elegant waterfront apartment overlooking Dubai Marina."
+},
+
+{
+id:4,
+title:"Jumeirah Estate",
+area:"Jumeirah",
+type:"Villa",
+beds:5,
+price:8900000,
+image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85",
+desc:"Spacious private estate in an exclusive Jumeirah community."
+},
+
+{
+id:5,
+title:"Burj Khalifa Penthouse",
+area:"Downtown Dubai",
+type:"Penthouse",
+beds:4,
+price:12500000,
+image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
+desc:"Ultra-luxury penthouse with exceptional skyline views."
+},
+
+{
+id:6,
+title:"Marina Grand",
+area:"Dubai Marina",
+type:"Apartment",
+beds:3,
+price:2750000,
+image:"https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=85",
+desc:"Large modern apartment designed for sophisticated city living."
+}
+
+];
+
+function formatPrice(price){
+return "AED "+price.toLocaleString();
+}
+
+function renderProperties(list=properties){
+
+const grid=document.getElementById("propertiesGrid");
+
+document.getElementById("resultCount").textContent=list.length;
+
+if(list.length===0){
+
+grid.innerHTML=`
+<div class="col-span-full text-center py-20">
+<h3 class="text-2xl font-semibold">No properties found</h3>
+<p class="text-gray-500 mt-2">Try changing your search filters.</p>
+</div>`;
+
+return;
+}
+
+grid.innerHTML=list.map(p=>`
+
+<article class="property bg-white rounded-2xl overflow-hidden border border-black/10">
+
+<div class="relative">
+
+<img src="${p.image}"
+class="w-full h-72 object-cover">
+
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-semibold">
+${p.type}
+</div>
+
+</div>
+
+<div class="p-6">
+
+<div class="flex justify-between gap-3">
+
+<div>
+<h3 class="text-xl font-semibold">${p.title}</h3>
+<p class="text-sm text-gray-500 mt-1">${p.area}</p>
+</div>
+
+</div>
+
+<div class="flex gap-5 text-sm text-gray-600 mt-5">
+<span>🛏 ${p.beds} Beds</span>
+<span>⌂ ${p.type}</span>
+</div>
+
+<div class="flex justify-between items-center mt-7">
+
+<div>
+<p class="text-xs text-gray-500">Starting from</p>
+<p class="text-xl font-bold">${formatPrice(p.price)}</p>
+</div>
+
+<button onclick="openProperty(${p.id})"
+class="bg-black text-white px-4 py-2.5 rounded-lg text-sm font-semibold">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+function applyFilters(){
+
+const area=document.getElementById("searchArea").value;
+const type=document.getElementById("searchType").value;
+const beds=document.getElementById("searchBeds").value;
+
+let result=properties.filter(p=>{
+
+const areaMatch=area==="all"||p.area===area;
+const typeMatch=type==="all"||p.type===type;
+const bedsMatch=beds==="all"||p.beds>=Number(beds);
+
+return areaMatch&&typeMatch&&bedsMatch;
+
+});
+
+renderProperties(result);
+
+document.getElementById("properties").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function openProperty(id){
+
+const p=properties.find(x=>x.id===id);
+
+const modal=document.getElementById("modal");
+
+document.getElementById("modalContent").innerHTML=`
+
+<div>
+
+<img src="${p.image}" class="w-full h-72 md:h-96 object-cover">
+
+<div class="p-7">
+
+<div class="flex justify-between items-start gap-5">
+
+<div>
+<p class="text-xs uppercase tracking-widest text-amber-600">
+${p.type}
+</p>
+
+<h2 class="text-3xl font-semibold mt-2">
+${p.title}
+</h2>
+
+<p class="text-gray-500 mt-1">${p.area}</p>
+</div>
+
+<button onclick="closeProperty()"
+class="text-2xl text-gray-400">
+×
+</button>
+
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-8">
+
+<div class="p-4 bg-gray-100 rounded-xl">
+<p class="text-xs text-gray-500">Bedrooms</p>
+<p class="font-semibold mt-1">${p.beds}</p>
+</div>
+
+<div class="p-4 bg-gray-100 rounded-xl">
+<p class="text-xs text-gray-500">Price</p>
+<p class="font-semibold mt-1">${formatPrice(p.price)}</p>
+</div>
+
+</div>
+
+<p class="text-gray-600 leading-relaxed mt-7">
+${p.desc}
+Our property advisors can arrange a private viewing
+and provide additional information.
+</p>
+
+<a href="#contact"
+onclick="closeProperty()"
+class="block text-center bg-black text-white py-4 rounded-xl mt-7 font-semibold">
+Request Private Viewing
+</a>
+
+</div>
+
+</div>
+`;
+
+modal.classList.remove("hidden");
+modal.classList.add("flex");
+
+}
+
+function closeProperty(){
+
+const modal=document.getElementById("modal");
+
+modal.classList.add("hidden");
+modal.classList.remove("flex");
+
+}
+
+document.getElementById("modal").addEventListener("click",function(e){
+
+if(e.target===this){
+closeProperty();
+}
+
+});
+
+function submitForm(e){
+
+e.preventDefault();
+
+document.getElementById("formMessage").textContent=
+"Thank you. Your consultation request has been received.";
+
+e.target.reset();
+
+}
+
+renderProperties();
+
+</script>
+
+</body>
+  </html>
