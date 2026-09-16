@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dilawar — Premium Web Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background:#050505; color:#fff; }
+    .glow {
+      box-shadow: 0 0 80px rgba(59,130,246,.12);
+    }
+    .card {
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(96,165,250,.45);
+      box-shadow: 0 20px 70px rgba(0,0,0,.45);
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="#" class="text-xl font-bold tracking-tight">
+        D<span class="text-blue-400">.</span>
+      </a>
+
+      <div class="hidden md:flex gap-8 text-sm text-gray-400">
+        <a href="#work" class="hover:text-white">Work</a>
+        <a href="#services" class="hover:text-white">Services</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </div>
+
+      <a href="#contact"
+         class="px-4 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-gray-200 transition">
+        Let's Talk
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center justify-center px-5 pt-20">
+    <div class="max-w-5xl mx-auto text-center">
+
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-gray-300 mb-8">
+        <span class="w-2 h-2 rounded-full bg-green-400"></span>
+        Available for new projects
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+        I Build
+        <span class="text-blue-400">Premium</span><br>
+        Digital Experiences.
+      </h1>
+
+      <p class="max-w-2xl mx-auto mt-7 text-lg text-gray-400 leading-relaxed">
+        Full-stack web developer creating modern, fast and conversion-focused
+        websites for businesses, startups and brands.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mt-9">
+        <a href="#work"
+           class="px-7 py-4 rounded-xl bg-blue-500 hover:bg-blue-400 font-semibold transition">
+          View My Work →
+        </a>
+
+        <a href="#contact"
+           class="px-7 py-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 font-semibold transition">
+          Start a Project
+        </a>
+      </div>
+
+      <div class="grid grid-cols-3 max-w-xl mx-auto mt-20 border border-white/10 rounded-2xl bg-white/[.03] overflow-hidden">
+        <div class="p-5 border-r border-white/10">
+          <div class="text-2xl font-bold">3+</div>
+          <div class="text-xs text-gray-500 mt-1">Projects</div>
+        </div>
+        <div class="p-5 border-r border-white/10">
+          <div class="text-2xl font-bold">100%</div>
+          <div class="text-xs text-gray-500 mt-1">Responsive</div>
+        </div>
+        <div class="p-5">
+          <div class="text-2xl font-bold">24/7</div>
+          <div class="text-xs text-gray-500 mt-1">Support</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="py-24 px-5">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="mb-12">
+        <p class="text-blue-400 text-sm font-semibold uppercase tracking-widest">
+          Selected Work
+        </p>
+
+        <h2 class="text-4xl md:text-5xl font-bold mt-3">
+          Projects built to impress.
+        </h2>
+
+        <p class="text-gray-400 mt-4 max-w-xl">
+          Explore my interactive website demos. Every project is designed
+          with a premium UI and real-world functionality.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- PROJECT 1 -->
+        <div class="card border border-white/10 rounded-3xl overflow-hidden bg-white/[.03]">
+          <div class="h-52 bg-gradient-to-br from-blue-600/30 via-purple-600/20 to-black flex items-center justify-center">
+            <div class="text-6xl">⚡</div>
+          </div>
+
+          <div class="p-6">
+            <p class="text-blue-400 text-xs font-semibold uppercase tracking-wider">
+              SaaS / Agency
+            </p>
+
+            <h3 class="text-2xl font-bold mt-2">
+              NovaFlow
+            </h3>
+
+            <p class="text-gray-400 text-sm leading-relaxed mt-3">
+              Modern dark SaaS and digital agency landing page with
+              pricing, services, animations and responsive design.
+            </p>
+
+            <a href="website-1/"
+               class="block text-center mt-6 px-5 py-3 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 transition">
+              Live Demo →
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="card border border-white/10 rounded-3xl overflow-hidden bg-white/[.03]">
+          <div class="h-52 bg-gradient-to-br from-orange-500/30 via-pink-500/20 to-black flex items-center justify-center">
+            <div class="text-6xl">🛍️</div>
+          </div>
+
+          <div class="p-6">
+            <p class="text-orange-400 text-xs font-semibold uppercase tracking-wider">
+              E-commerce
+            </p>
+
+            <h3 class="text-2xl font-bold mt-2">
+              Mono Store
+            </h3>
+
+            <p class="text-gray-400 text-sm leading-relaxed mt-3">
+              Clean fashion e-commerce experience with product filtering,
+              image slider and functional shopping cart UI.
+            </p>
+
+            <a href="website-2/"
+               class="block text-center mt-6 px-5 py-3 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 transition">
+              Live Demo →
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="card border border-white/10 rounded-3xl overflow-hidden bg-white/[.03]">
+          <div class="h-52 bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-black flex items-center justify-center">
+            <div class="text-6xl">🏙️</div>
+          </div>
+
+          <div class="p-6">
+            <p class="text-cyan-400 text-xs font-semibold uppercase tracking-wider">
+              Real Estate
+            </p>
+
+            <h3 class="text-2xl font-bold mt-2">
+              Arcadia Dubai
+            </h3>
+
+            <p class="text-gray-400 text-sm leading-relaxed mt-3">
+              Premium Dubai property website with luxury listings,
+              advanced filters, property details and consultation UI.
+            </p>
+
+            <a href="website-3/"
+               class="block text-center mt-6 px-5 py-3 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 transition">
+              Live Demo →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-24 px-5 border-t border-white/10">
+    <div class="max-w-6xl mx-auto">
+
+      <p class="text-blue-400 text-sm font-semibold uppercase tracking-widest">
+        What I Do
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold mt-3">
+        Websites that work.
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-5 mt-12">
+
+        <div class="p-7 rounded-2xl border border-white/10 bg-white/[.03]">
+          <div class="text-3xl">💻</div>
+          <h3 class="text-xl font-bold mt-5">Web Development</h3>
+          <p class="text-gray-400 mt-3 text-sm leading-relaxed">
+            Modern responsive websites and web applications built for real
+            businesses.
+          </p>
+        </div>
+
+        <div class="p-7 rounded-2xl border border-white/10 bg-white/[.03]">
+          <div class="text-3xl">🎨</div>
+          <h3 class="text-xl font-bold mt-5">UI / UX Design</h3>
+          <p class="text-gray-400 mt-3 text-sm leading-relaxed">
+            Clean premium interfaces focused on usability, trust and
+            conversions.
+          </p>
+        </div>
+
+        <div class="p-7 rounded-2xl border border-white/10 bg-white/[.03]">
+          <div class="text-3xl">🚀</div>
+          <h3 class="text-xl font-bold mt-5">Deployment</h3>
+          <p class="text-gray-400 mt-3 text-sm leading-relaxed">
+            Fast deployment and production-ready websites optimized for
+            modern devices.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-28 px-5">
+    <div class="max-w-4xl mx-auto text-center border border-white/10 rounded-3xl p-10 md:p-16 bg-white/[.03] glow">
+
+      <p class="text-blue-400 text-sm font-semibold uppercase tracking-widest">
+        Let's Work Together
+      </p>
+
+      <h2 class="text-4xl md:text-6xl font-bold mt-4">
+        Have a project in mind?
+      </h2>
+
+      <p class="text-gray-400 mt-5 max-w-xl mx-auto">
+        Let's discuss your idea and turn it into a modern digital experience.
+      </p>
+
+      <a href="mailto:your@email.com"
+         class="inline-block mt-8 px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-gray-200 transition">
+        Contact Me →
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-8 px-5">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-4 text-sm text-gray-500">
+      <p>© 2026 Dilawar. All rights reserved.</p>
+      <p>Designed & Built with passion.</p>
+    </div>
+  </footer>
+
+</body>
+  </html>
