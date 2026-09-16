@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARCADIA — Dubai Luxury Real Estate</title>
+  <meta name="description" content="Premium Dubai luxury real estate brokerage website.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{background:#f7f6f3}
+    .serif{font-family:Georgia,'Times New Roman',serif}
+    .hero{background:
+      linear-gradient(90deg,rgba(7,10,12,.72),rgba(7,10,12,.20)),
+      url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2200&q=90') center/cover}
+    .property-card{transition:transform .3s ease,box-shadow .3s ease}
+    .property-card:hover{transform:translateY(-5px);box-shadow:0 22px 60px rgba(20,20,20,.12)}
+    .property-card img{transition:transform .55s ease}
+    .property-card:hover img{transform:scale(1.04)}
+    .drawer{transition:transform .35s ease}
+    .fade{animation:fade .45s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}
+    .reveal.show{opacity:1;transform:none}
+    select,input{outline:none}
+    .select-wrap{position:relative}
+  </style>
+</head>
+
+<body class="text-[#1b1c1b] antialiased">
+
+  <!-- Top bar -->
+  <div class="bg-[#171817] text-[#d9c9a4] text-[11px] tracking-[.16em] uppercase text-center py-2.5 px-4">
+    Dubai · Abu Dhabi · Ras Al Khaimah &nbsp; | &nbsp; Private property advisory
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-[#f7f6f3]/90 backdrop-blur-xl border-b border-black/10">
+    <nav class="max-w-7xl mx-auto h-[78px] px-5 sm:px-8 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <span class="w-9 h-9 rounded-full border border-[#b69b68] grid place-items-center text-sm font-serif">A</span>
+        <span class="tracking-[.22em] text-sm font-semibold">ARCADIA</span>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-9 text-sm text-black/65">
+        <a href="#properties" class="hover:text-black">Properties</a>
+        <a href="#areas" class="hover:text-black">Dubai Areas</a>
+        <a href="#services" class="hover:text-black">Advisory</a>
+        <a href="#about" class="hover:text-black">About</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+97140000000" class="hidden sm:inline-flex text-sm px-4 py-2.5">+971 4 000 0000</a>
+        <a href="#contact" class="rounded-full bg-[#1b1c1b] text-white text-sm px-5 py-2.5 hover:bg-black transition">Private Consultation</a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full border border-black/10">☰</button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="hidden lg:hidden px-5 pb-5 border-t border-black/10">
+      <div class="pt-4 flex flex-col gap-4 text-sm">
+        <a href="#properties">Properties</a>
+        <a href="#areas">Dubai Areas</a>
+        <a href="#services">Advisory</a>
+        <a href="#about">About</a>
+        <a href="#contact">Private Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero min-h-[680px] lg:min-h-[760px] flex items-center text-white">
+    <div class="max-w-7xl w-full mx-auto px-5 sm:px-8 py-20">
+      <div class="max-w-3xl reveal">
+        <p class="text-xs tracking-[.3em] uppercase text-[#e3d4b2]">Dubai Luxury Real Estate</p>
+        <h1 class="serif mt-6 text-5xl sm:text-7xl lg:text-[88px] leading-[.92] font-normal">
+          A finer way<br>to <i>live</i> in Dubai.
+        </h1>
+        <p class="mt-7 max-w-xl text-white/70 text-base sm:text-lg leading-7">
+          Exceptional residences, private sales and tailored property advisory for clients who expect more.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="#properties" class="rounded-full bg-white text-black px-7 py-3.5 font-medium hover:bg-[#eee]">Explore residences</a>
+          <a href="#contact" class="rounded-full border border-white/30 bg-white/10 backdrop-blur px-7 py-3.5 font-medium hover:bg-white/15">Speak to an advisor</a>
+        </div>
+      </div>
+
+      <!-- Hero search -->
+      <div class="mt-16 max-w-5xl rounded-2xl bg-white text-black p-3 shadow-2xl reveal">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-2">
+          <label class="p-3 border-r border-black/10">
+            <span class="block text-[10px] uppercase tracking-widest text-black/40">Location</span>
+            <select id="heroLocation" class="mt-1 w-full bg-transparent text-sm font-medium">
+              <option value="all">All Dubai</option><option>Downtown Dubai</option><option>Palm Jumeirah</option><option>Dubai Marina</option><option>Dubai Hills</option><option>Business Bay</option>
+            </select>
+          </label>
+          <label class="p-3 border-r border-black/10">
+            <span class="block text-[10px] uppercase tracking-widest text-black/40">Property</span>
+            <select id="heroType" class="mt-1 w-full bg-transparent text-sm font-medium">
+              <option value="all">Any type</option><option value="apartment">Apartment</option><option value="villa">Villa</option><option value="penthouse">Penthouse</option>
+            </select>
+          </label>
+          <label class="p-3 border-r border-black/10">
+            <span class="block text-[10px] uppercase tracking-widest text-black/40">Bedrooms</span>
+            <select id="heroBeds" class="mt-1 w-full bg-transparent text-sm font-medium">
+              <option value="all">Any bedrooms</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option>
+            </select>
+          </label>
+          <label class="p-3 border-r border-black/10">
+            <span class="block text-[10px] uppercase tracking-widest text-black/40">Budget</span>
+            <select id="heroBudget" class="mt-1 w-full bg-transparent text-sm font-medium">
+              <option value="all">Any budget</option><option value="3">Under AED 3M</option><option value="5">AED 3M–5M</option><option value="10">AED 5M–10M</option><option value="100">AED 10M+</option>
+            </select>
+          </label>
+          <button id="heroSearch" class="rounded-xl bg-[#1b1c1b] text-white min-h-12 font-medium hover:bg-black transition">Search residences →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section id="about" class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-32">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-end">
+      <div class="reveal">
+        <p class="text-xs tracking-[.25em] uppercase text-[#a18452]">The Arcadia standard</p>
+        <h2 class="serif mt-4 text-4xl sm:text-6xl leading-tight font-normal">Property is personal.<br><i>Our advice is too.</i></h2>
+      </div>
+      <div class="reveal text-black/55 leading-7 max-w-xl">
+        <p>We combine local market knowledge with a discreet, client-first approach. From first viewing to final handover, every detail is handled with clarity.</p>
+        <div class="mt-8 flex gap-10">
+          <div><strong class="block text-3xl text-black serif">12+</strong><span class="text-xs uppercase tracking-wider">Years in Dubai</span></div>
+          <div><strong class="block text-3xl text-black serif">AED 2B+</strong><span class="text-xs uppercase tracking-wider">Transactions advised</span></div>
+          <div><strong class="block text-3xl text-black serif">18</strong><span class="text-xs uppercase tracking-wider">Prime communities</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties -->
+  <section id="properties" class="bg-[#eeece7] border-y border-black/5">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 lg:py-24">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 reveal">
+        <div>
+          <p class="text-xs tracking-[.25em] uppercase text-[#a18452]">Curated portfolio</p>
+          <h2 class="serif mt-3 text-4xl sm:text-6xl font-normal">Exceptional residences.</h2>
+        </div>
+        <p class="max-w-md text-sm text-black/50 leading-6">A selection of apartments, villas and penthouses across Dubai's most sought-after addresses.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="mt-12 rounded-2xl bg-white p-4 shadow-sm border border-black/5 reveal">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <label class="rounded-xl bg-[#f7f6f3] px-4 py-3">
+            <span class="block text-[9px] uppercase tracking-widest text-black/40">Search</span>
+            <input id="searchInput" type="text" placeholder="Area or property..." class="mt-1 w-full bg-transparent text-sm">
+          </label>
+          <label class="rounded-xl bg-[#f7f6f3] px-4 py-3">
+            <span class="block text-[9px] uppercase tracking-widest text-black/40">Area</span>
+            <select id="locationFilter" class="mt-1 w-full bg-transparent text-sm"><option value="all">All areas</option><option>Downtown Dubai</option><option>Palm Jumeirah</option><option>Dubai Marina</option><option>Dubai Hills</option><option>Business Bay</option></select>
+          </label>
+          <label class="rounded-xl bg-[#f7f6f3] px-4 py-3">
+            <span class="block text-[9px] uppercase tracking-widest text-black/40">Type</span>
+            <select id="typeFilter" class="mt-1 w-full bg-transparent text-sm"><option value="all">All types</option><option value="apartment">Apartment</option><option value="villa">Villa</option><option value="penthouse">Penthouse</option></select>
+          </label>
+          <label class="rounded-xl bg-[#f7f6f3] px-4 py-3">
+            <span class="block text-[9px] uppercase tracking-widest text-black/40">Bedrooms</span>
+            <select id="bedsFilter" class="mt-1 w-full bg-transparent text-sm"><option value="all">Any</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
+          </label>
+          <label class="rounded-xl bg-[#f7f6f3] px-4 py-3">
+            <span class="block text-[9px] uppercase tracking-widest text-black/40">Price</span>
+            <select id="priceFilter" class="mt-1 w-full bg-transparent text-sm"><option value="all">Any price</option><option value="3">Under AED 3M</option><option value="5">AED 3M–5M</option><option value="10">AED 5M–10M</option><option value="100">AED 10M+</option></select>
+          </label>
+        </div>
+        <div class="mt-3 flex justify-between items-center px-1">
+          <span id="resultCount" class="text-xs text-black/45">8 residences</span>
+          <button id="resetBtn" class="text-xs underline underline-offset-4 text-black/60 hover:text-black">Reset filters</button>
+        </div>
+      </div>
+
+      <div id="propertyGrid" class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <div id="noResults" class="hidden text-center py-20">
+        <div class="serif text-3xl">No residences found.</div>
+        <p class="mt-2 text-sm text-black/50">Try adjusting your filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas -->
+  <section id="areas" class="max-w-7xl mx-auto px-5 sm:px-8 py-24">
+    <div class="reveal text-center">
+      <p class="text-xs tracking-[.25em] uppercase text-[#a18452]">Dubai, curated</p>
+      <h2 class="serif mt-3 text-4xl sm:text-6xl font-normal">Explore prime addresses.</h2>
+    </div>
+    <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="reveal relative h-72 rounded-2xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl">Downtown</h3><p class="text-xs text-white/60 mt-1">Burj Khalifa · DIFC</p></div>
+      </div>
+      <div class="reveal relative h-72 rounded-2xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl">Palm Jumeirah</h3><p class="text-xs text-white/60 mt-1">Beachfront · Private villas</p></div>
+      </div>
+      <div class="reveal relative h-72 rounded-2xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl">Dubai Marina</h3><p class="text-xs text-white/60 mt-1">Waterfront · Yachts</p></div>
+      </div>
+      <div class="reveal relative h-72 rounded-2xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl">Dubai Hills</h3><p class="text-xs text-white/60 mt-1">Green living · Golf</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="bg-[#171817] text-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24">
+      <div class="grid lg:grid-cols-2 gap-14">
+        <div class="reveal">
+          <p class="text-xs tracking-[.25em] uppercase text-[#d2b77d]">Beyond brokerage</p>
+          <h2 class="serif mt-4 text-4xl sm:text-6xl font-normal">An advisor for every move.</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-10">
+          <div class="reveal border-t border-white/15 pt-5"><span class="text-[#d2b77d]">01</span><h3 class="mt-3 font-medium">Buying Advisory</h3><p class="mt-2 text-sm text-white/50 leading-6">Shortlisting, viewings, negotiations and transaction coordination.</p></div>
+          <div class="reveal border-t border-white/15 pt-5"><span class="text-[#d2b77d]">02</span><h3 class="mt-3 font-medium">Private Sales</h3><p class="mt-2 text-sm text-white/50 leading-6">Discreet representation for premium and off-market residences.</p></div>
+          <div class="reveal border-t border-white/15 pt-5"><span class="text-[#d2b77d]">03</span><h3 class="mt-3 font-medium">Investment Advisory</h3><p class="mt-2 text-sm text-white/50 leading-6">Property selection based on your objectives, horizon and risk profile.</p></div>
+          <div class="reveal border-t border-white/15 pt-5"><span class="text-[#d2b77d]">04</span><h3 class="mt-3 font-medium">Portfolio Services</h3><p class="mt-2 text-sm text-white/50 leading-6">Ongoing support across leasing, management and future acquisitions.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-7xl mx-auto px-5 sm:px-8 py-24">
+    <div class="rounded-[2rem] bg-[#e8e1d4] p-8 sm:p-14 lg:p-20 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <p class="text-xs tracking-[.25em] uppercase text-[#917447]">Private consultation</p>
+        <h2 class="serif mt-4 text-4xl sm:text-6xl font-normal">Tell us what<br><i>home</i> means to you.</h2>
+        <p class="mt-5 max-w-md text-black/55 leading-7">Share your requirements and one of our Dubai property advisors will contact you.</p>
+      </div>
+      <form id="contactForm" class="reveal bg-white rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input required placeholder="Full name" class="rounded-xl bg-[#f7f6f3] px-4 py-3.5 text-sm">
+          <input required type="email" placeholder="Email address" class="rounded-xl bg-[#f7f6f3] px-4 py-3.5 text-sm">
+          <input placeholder="Phone / WhatsApp" class="rounded-xl bg-[#f7f6f3] px-4 py-3.5 text-sm sm:col-span-2">
+          <select class="rounded-xl bg-[#f7f6f3] px-4 py-3.5 text-sm sm:col-span-2"><option>I'm looking to buy</option><option>I'm looking to sell</option><option>Investment advisory</option></select>
+          <textarea placeholder="Tell us about your requirements..." rows="4" class="rounded-xl bg-[#f7f6f3] px-4 py-3.5 text-sm sm:col-span-2 resize-none"></textarea>
+        </div>
+        <button class="mt-4 w-full rounded-xl bg-[#1b1c1b] text-white py-3.5 font-medium hover:bg-black">Request consultation →</button>
+        <p id="formMessage" class="hidden mt-3 text-center text-sm text-green-700">Thank you — your request has been received.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-[#111211] text-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="tracking-[.25em] text-sm">ARCADIA</div>
+        <p class="mt-4 max-w-sm text-sm leading-6 text-white/40">Private Dubai real estate advisory for exceptional homes and considered investments.</p>
+      </div>
+      <div><h4 class="text-sm">Office</h4><p class="mt-4 text-sm text-white/40 leading-6">Downtown Dubai<br>Dubai, UAE<br>+971 4 000 0000</p></div>
+      <div><h4 class="text-sm">Navigate</h4><div class="mt-4 space-y-3 text-sm text-white/40"><a href="#properties" class="block hover:text-white">Properties</a><a href="#areas" class="block hover:text-white">Areas</a><a href="#contact" class="block hover:text-white">Contact</a></div></div>
+    </div>
+    <div class="border-t border-white/10 max-w-7xl mx-auto px-5 sm:px-8 py-6 text-xs text-white/30 flex justify-between gap-4"><span>© 2026 Arcadia Properties</span><span>Privacy · Terms</span></div>
+  </footer>
+
+  <!-- Property Detail Modal -->
+  <div id="modal" class="fixed inset-0 z-[80] bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white max-w-4xl w-full max-h-[92vh] overflow-auto rounded-3xl relative fade">
+      <button id="closeModal" class="absolute right-4 top-4 z-10 w-10 h-10 rounded-full bg-white/90 shadow text-xl">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const properties = [
+      {id:1,title:"The Opus Residence",area:"Business Bay",type:"apartment",beds:2,baths:3,size:"1,842",price:3.45,image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",tag:"Featured"},
+      {id:2,title:"Palm Crown Villa",area:"Palm Jumeirah",type:"villa",beds:5,baths:6,size:"7,820",price:18.5,image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",tag:"Private"},
+      {id:3,title:"Skyline Penthouse",area:"Downtown Dubai",type:"penthouse",beds:4,baths:5,size:"4,950",price:12.8,image:"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85",tag:"New"},
+      {id:4,title:"Marina Horizon",area:"Dubai Marina",type:"apartment",beds:3,baths:4,size:"2,315",price:4.85,image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85",tag:"Waterfront"},
+      {id:5,title:"Hillside Estate",area:"Dubai Hills",type:"villa",beds:5,baths:6,size:"6,410",price:9.2,image:"https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85",tag:"Exclusive"},
+      {id:6,title:"Burj Vista Suite",area:"Downtown Dubai",type:"apartment",beds:3,baths:4,size:"2,105",price:5.75,image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",tag:"City View"},
+      {id:7,title:"Palm Garden Residence",area:"Palm Jumeirah",type:"villa",beds:4,baths:5,size:"5,360",price:10.5,image:"https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85",tag:"Beachfront"},
+      {id:8,title:"Canal House",area:"Business Bay",type:"apartment",beds:2,baths:3,size:"1,610",price:2.85,image:"https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85",tag:"Value"}
+    ];
+
+    let state={location:"all",type:"all",beds:"all",price:"all",search:""};
+
+    const grid=document.getElementById("propertyGrid");
+    const noResults=document.getElementById("noResults");
+
+    function priceMatch(p){
+      if(state.price==="all") return true;
+      const n=Number(state.price);
+      if(n===3) return p.price<3;
+      if(n===5) return p.price>=3 && p.price<5;
+      if(n===10) return p.price>=5 && p.price<10;
+      return p.price>=10;
+    }
+
+    function render(){
+      const q=state.search.toLowerCase();
+      const list=properties.filter(p =>
+        (state.location==="all" || p.area===state.location) &&
+        (state.type==="all" || p.type===state.type) &&
+        (state.beds==="all" || p.beds>=Number(state.beds)) &&
+        priceMatch(p) &&
+        (!q || p.title.toLowerCase().includes(q) || p.area.toLowerCase().includes(q))
+      );
+
+      document.getElementById("resultCount").textContent=`${list.length} residence${list.length===1?"":"s"}`;
+      noResults.classList.toggle("hidden",list.length>0);
+      grid.innerHTML=list.map(p=>`
+        <article class="property-card bg-white rounded-2xl overflow-hidden border border-black/5">
+          <button onclick="openProperty(${p.id})" class="block w-full text-left">
+            <div class="relative aspect-[1.15] overflow-hidden bg-zinc-200">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+              <span class="absolute top-4 left-4 bg-white/90 backdrop-blur rounded-full px-3 py-1.5 text-[10px] uppercase tracking-widest">${p.tag}</span>
+              <span class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 grid place-items-center">♡</span>
+            </div>
+            <div class="p-5">
+              <div class="flex justify-between gap-3">
+                <div><h3 class="font-medium">${p.title}</h3><p class="mt-1 text-xs text-black/45">${p.area}</p></div>
+                <span class="text-xs border border-black/10 rounded-full px-2 py-1 h-fit capitalize">${p.type}</span>
+              </div>
+              <div class="mt-5 flex items-center gap-4 text-xs text-black/50">
+                <span>${p.beds} Beds</span><span>${p.baths} Baths</span><span>${p.size} sq ft</span>
+              </div>
+              <div class="mt-5 pt-4 border-t border-black/10 flex items-end justify-between">
+                <span class="text-xs text-black/45">Asking price</span>
+                <strong class="serif text-2xl font-normal">AED ${p.price}M</strong>
+              </div>
+            </div>
+          </button>
+        </article>
+      `).join("");
+    }
+
+    function setStateFromFilters(){
+      state.location=document.getElementById("locationFilter").value;
+      state.type=document.getElementById("typeFilter").value;
+      state.beds=document.getElementById("bedsFilter").value;
+      state.price=document.getElementById("priceFilter").value;
+      state.search=document.getElementById("searchInput").value.trim();
+      render();
+    }
+
+    ["locationFilter","typeFilter","bedsFilter","priceFilter"].forEach(id=>document.getElementById(id).addEventListener("change",setStateFromFilters));
+    document.getElementById("searchInput").addEventListener("input",setStateFromFilters);
+
+    document.getElementById("resetBtn").onclick=()=>{
+      document.getElementById("locationFilter").value="all";
+      document.getElementById("typeFilter").value="all";
+      document.getElementById("bedsFilter").value="all";
+      document.getElementById("priceFilter").value="all";
+      document.getElementById("searchInput").value="";
+      state={location:"all",type:"all",beds:"all",price:"all",search:""};
+      render();
+    };
+
+    document.getElementById("heroSearch").onclick=()=>{
+      document.getElementById("locationFilter").value=document.getElementById("heroLocation").value;
+      document.getElementById("typeFilter").value=document.getElementById("heroType").value;
+      document.getElementById("bedsFilter").value=document.getElementById("heroBeds").value;
+      document.getElementById("priceFilter").value=document.getElementById("heroBudget").value;
+      setStateFromFilters();
+      document.getElementById("properties").scrollIntoView({behavior:"smooth"});
+    };
+
+    function openProperty(id){
+      const p=properties.find(x=>x.id===id);
+      document.getElementById("modalContent").innerHTML=`
+        <div class="grid md:grid-cols-2">
+          <img src="${p.image}" class="w-full h-72 md:h-full object-cover" alt="${p.title}">
+          <div class="p-7 sm:p-10">
+            <span class="text-xs uppercase tracking-[.2em] text-[#a18452]">${p.tag}</span>
+            <h2 class="serif mt-3 text-4xl font-normal">${p.title}</h2>
+            <p class="mt-2 text-sm text-black/45">${p.area}, Dubai</p>
+            <div class="mt-8 text-3xl serif">AED ${p.price}M</div>
+            <div class="mt-6 grid grid-cols-3 gap-2 text-center text-xs">
+              <div class="bg-[#f7f6f3] rounded-xl p-3"><strong class="block text-base">${p.beds}</strong>Bedrooms</div>
+              <div class="bg-[#f7f6f3] rounded-xl p-3"><strong class="block text-base">${p.baths}</strong>Bathrooms</div>
+              <div class="bg-[#f7f6f3] rounded-xl p-3"><strong class="block text-base">${p.size}</strong>Sq Ft</div>
+            </div>
+            <p class="mt-7 text-sm text-black/55 leading-6">A refined residence in one of Dubai's most desirable communities, presented for discerning buyers. Contact our advisory team for availability, floor plans and a private viewing.</p>
+            <a href="#contact" onclick="closeProperty()" class="mt-7 block text-center rounded-xl bg-[#1b1c1b] text-white py-3.5 font-medium">Request private viewing</a>
+          </div>
+        </div>`;
+      document.getElementById("modal").classList.remove("hidden");
+      document.getElementById("modal").classList.add("flex");
+    }
+
+    function closeProperty(){
+      document.getElementById("modal").classList.add("hidden");
+      document.getElementById("modal").classList.remove("flex");
+    }
+    document.getElementById("closeModal").onclick=closeProperty;
+    document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeProperty()});
+
+    document.getElementById("menuBtn").onclick=()=>document.getElementById("mobileMenu").classList.toggle("hidden");
+
+    document.getElementById("contactForm").addEventListener("submit",e=>{
+      e.preventDefault();
+      document.getElementById("formMessage").classList.remove("hidden");
+      e.target.reset();
+    });
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+    },{threshold:.12});
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+    render();
+  </script>
+</body>
+</html>
