@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONO — Modern E-commerce</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior:smooth; }
+    body { background:#faf9f7; }
+    .slide { display:none; }
+    .slide.active { display:block; animation:fade .55s ease; }
+    @keyframes fade { from{opacity:.35;transform:scale(1.01)} to{opacity:1;transform:scale(1)} }
+    .product-card { transition:transform .3s ease, box-shadow .3s ease; }
+    .product-card:hover { transform:translateY(-5px); box-shadow:0 18px 45px rgba(0,0,0,.09); }
+    .product-img { transition:transform .5s ease; }
+    .product-card:hover .product-img { transform:scale(1.045); }
+    #cartDrawer { transition:transform .35s ease; }
+    #cartOverlay { transition:opacity .35s ease; }
+    .no-scrollbar::-webkit-scrollbar { display:none; }
+    .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+  </style>
+</head>
+
+<body class="text-zinc-900 antialiased">
+
+  <!-- Announcement -->
+  <div class="bg-zinc-950 text-white text-center text-xs py-2.5 tracking-wide">
+    FREE SHIPPING ON ORDERS OVER $100 · EASY 30-DAY RETURNS
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 bg-[#faf9f7]/90 backdrop-blur-xl border-b border-zinc-200">
+    <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      <button id="mobileMenuBtn" class="lg:hidden text-xl">☰</button>
+
+      <a href="#" class="text-2xl font-black tracking-[-.08em]">MONO<span class="text-zinc-400">.</span></a>
+
+      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-600">
+        <a href="#shop" class="hover:text-black">Shop</a>
+        <a href="#new" class="hover:text-black">New Arrivals</a>
+        <a href="#featured" class="hover:text-black">Featured</a>
+        <a href="#about" class="hover:text-black">About</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button class="hidden sm:block p-2 hover:bg-zinc-100 rounded-full">⌕</button>
+        <button class="p-2 hover:bg-zinc-100 rounded-full">♡</button>
+        <button id="cartBtn" class="relative p-2 hover:bg-zinc-100 rounded-full">
+          🛒
+          <span id="cartCount" class="absolute -right-1 -top-1 w-5 h-5 rounded-full bg-black text-white text-[10px] grid place-items-center">0</span>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobileMenu" class="hidden lg:hidden px-5 py-4 border-t border-zinc-200 bg-[#faf9f7]">
+      <div class="flex flex-col gap-4 text-sm">
+        <a href="#shop">Shop</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#featured">Featured</a>
+        <a href="#about">About</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Slider -->
+  <section class="relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-5">
+      <div class="relative overflow-hidden rounded-[2rem] bg-zinc-200 min-h-[540px] sm:min-h-[620px]">
+
+        <div class="slide active relative min-h-[540px] sm:min-h-[620px]">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85"
+               class="absolute inset-0 w-full h-full object-cover" alt="Fashion collection">
+          <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent"></div>
+          <div class="relative z-10 min-h-[540px] sm:min-h-[620px] flex items-center px-7 sm:px-14">
+            <div class="max-w-xl text-white">
+              <p class="text-xs tracking-[.25em] uppercase mb-5">Autumn / Winter 2026</p>
+              <h1 class="text-5xl sm:text-7xl font-semibold tracking-[-.055em] leading-[.92]">Less noise.<br>More style.</h1>
+              <p class="mt-6 max-w-md text-white/75 leading-7">Refined essentials designed for everyday life. Discover our latest collection.</p>
+              <a href="#shop" class="inline-flex mt-8 rounded-full bg-white text-black px-7 py-3.5 font-semibold hover:bg-zinc-200">Shop collection →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide relative min-h-[540px] sm:min-h-[620px]">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=85"
+               class="absolute inset-0 w-full h-full object-cover" alt="New season">
+          <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+          <div class="relative z-10 min-h-[540px] sm:min-h-[620px] flex items-center px-7 sm:px-14">
+            <div class="max-w-xl text-white">
+              <p class="text-xs tracking-[.25em] uppercase mb-5">New Season</p>
+              <h2 class="text-5xl sm:text-7xl font-semibold tracking-[-.055em] leading-[.92]">Everyday,<br>elevated.</h2>
+              <p class="mt-6 max-w-md text-white/75 leading-7">Clean silhouettes, premium textures and timeless colors.</p>
+              <a href="#new" class="inline-flex mt-8 rounded-full bg-white text-black px-7 py-3.5 font-semibold hover:bg-zinc-200">Explore new arrivals →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide relative min-h-[540px] sm:min-h-[620px]">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85"
+               class="absolute inset-0 w-full h-full object-cover" alt="Curated collection">
+          <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+          <div class="relative z-10 min-h-[540px] sm:min-h-[620px] flex items-center px-7 sm:px-14">
+            <div class="max-w-xl text-white">
+              <p class="text-xs tracking-[.25em] uppercase mb-5">The Edit</p>
+              <h2 class="text-5xl sm:text-7xl font-semibold tracking-[-.055em] leading-[.92]">Curated<br>for you.</h2>
+              <p class="mt-6 max-w-md text-white/75 leading-7">The pieces our community is wearing right now.</p>
+              <a href="#featured" class="inline-flex mt-8 rounded-full bg-white text-black px-7 py-3.5 font-semibold hover:bg-zinc-200">Shop the edit →</a>
+            </div>
+          </div>
+        </div>
+
+        <button id="prev" class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 backdrop-blur grid place-items-center hover:bg-white text-xl">‹</button>
+        <button id="next" class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 backdrop-blur grid place-items-center hover:bg-white text-xl">›</button>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          <button class="dot w-8 h-1 rounded-full bg-white"></button>
+          <button class="dot w-2 h-1 rounded-full bg-white/50"></button>
+          <button class="dot w-2 h-1 rounded-full bg-white/50"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Shop by category</h2>
+      <a href="#shop" class="text-sm underline underline-offset-4">View all</a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <a href="#shop" class="group rounded-2xl overflow-hidden bg-zinc-200 relative h-52 sm:h-64">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <span class="absolute bottom-4 left-4 bg-white/90 rounded-full px-4 py-2 text-sm font-medium">Women</span>
+      </a>
+      <a href="#shop" class="group rounded-2xl overflow-hidden bg-zinc-200 relative h-52 sm:h-64">
+        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=700&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <span class="absolute bottom-4 left-4 bg-white/90 rounded-full px-4 py-2 text-sm font-medium">Men</span>
+      </a>
+      <a href="#shop" class="group rounded-2xl overflow-hidden bg-zinc-200 relative h-52 sm:h-64">
+        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <span class="absolute bottom-4 left-4 bg-white/90 rounded-full px-4 py-2 text-sm font-medium">Outerwear</span>
+      </a>
+      <a href="#shop" class="group rounded-2xl overflow-hidden bg-zinc-200 relative h-52 sm:h-64">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <span class="absolute bottom-4 left-4 bg-white/90 rounded-full px-4 py-2 text-sm font-medium">Essentials</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="shop" class="max-w-7xl mx-auto px-5 sm:px-8 py-10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div>
+        <p class="text-xs tracking-[.2em] uppercase text-zinc-500">Our selection</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-semibold tracking-tight">New arrivals</h2>
+      </div>
+      <div class="flex gap-2 overflow-x-auto no-scrollbar">
+        <button class="filter active rounded-full bg-black text-white px-4 py-2 text-sm" data-filter="all">All</button>
+        <button class="filter rounded-full bg-zinc-100 px-4 py-2 text-sm" data-filter="outerwear">Outerwear</button>
+        <button class="filter rounded-full bg-zinc-100 px-4 py-2 text-sm" data-filter="tops">Tops</button>
+        <button class="filter rounded-full bg-zinc-100 px-4 py-2 text-sm" data-filter="bottoms">Bottoms</button>
+      </div>
+    </div>
+
+    <div id="productGrid" class="mt-9 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10"></div>
+  </section>
+
+  <!-- Feature banner -->
+  <section id="featured" class="max-w-7xl mx-auto px-5 sm:px-8 py-20">
+    <div class="rounded-[2rem] bg-[#e9e4db] overflow-hidden grid md:grid-cols-2">
+      <div class="p-8 sm:p-14 flex items-center">
+        <div>
+          <p class="text-xs tracking-[.22em] uppercase text-zinc-500">Made to last</p>
+          <h2 class="mt-4 text-4xl sm:text-5xl font-semibold tracking-tight">Good design<br>doesn't expire.</h2>
+          <p class="mt-5 max-w-md text-zinc-600 leading-7">We focus on timeless pieces, responsible materials and thoughtful details that stay relevant beyond a single season.</p>
+          <a href="#about" class="inline-flex mt-7 rounded-full bg-black text-white px-6 py-3 font-medium">Our philosophy →</a>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85" class="w-full h-[420px] md:h-full object-cover" alt="Fashion detail">
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="about" class="border-y border-zinc-200 bg-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid sm:grid-cols-3 gap-8">
+      <div><div class="text-2xl">↗</div><h3 class="mt-4 font-semibold">Free shipping</h3><p class="mt-2 text-sm text-zinc-500">On all orders over $100.</p></div>
+      <div><div class="text-2xl">↺</div><h3 class="mt-4 font-semibold">30-day returns</h3><p class="mt-2 text-sm text-zinc-500">Easy returns, no questions asked.</p></div>
+      <div><div class="text-2xl">◇</div><h3 class="mt-4 font-semibold">Secure checkout</h3><p class="mt-2 text-sm text-zinc-500">Your payment details stay protected.</p></div>
+    </div>
+  </section>
+
+  <footer class="bg-zinc-950 text-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="text-2xl font-black tracking-[-.08em]">MONO.</div>
+        <p class="mt-4 max-w-sm text-sm leading-6 text-zinc-500">Modern essentials for people who prefer quality over noise.</p>
+      </div>
+      <div><h4 class="font-medium">Shop</h4><div class="mt-4 space-y-3 text-sm text-zinc-500"><a class="block hover:text-white" href="#shop">New arrivals</a><a class="block hover:text-white" href="#shop">Women</a><a class="block hover:text-white" href="#shop">Men</a></div></div>
+      <div><h4 class="font-medium">Help</h4><div class="mt-4 space-y-3 text-sm text-zinc-500"><a class="block hover:text-white" href="#">Shipping</a><a class="block hover:text-white" href="#">Returns</a><a class="block hover:text-white" href="#">Contact</a></div></div>
+    </div>
+    <div class="border-t border-white/10 max-w-7xl mx-auto px-5 sm:px-8 py-6 text-xs text-zinc-600">© 2026 MONO. All rights reserved.</div>
+  </footer>
+
+  <!-- Cart Overlay -->
+  <div id="cartOverlay" class="fixed inset-0 z-[60] bg-black/40 opacity-0 pointer-events-none"></div>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="fixed z-[70] right-0 top-0 h-full w-full max-w-md bg-white translate-x-full shadow-2xl flex flex-col">
+    <div class="px-6 py-5 border-b border-zinc-200 flex justify-between items-center">
+      <div><h2 class="text-xl font-semibold">Your cart</h2><p id="cartSubtitle" class="text-xs text-zinc-500 mt-1">0 items</p></div>
+      <button id="closeCart" class="w-10 h-10 rounded-full bg-zinc-100 text-xl">×</button>
+    </div>
+
+    <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-5">
+      <div id="emptyCart" class="h-full grid place-items-center text-center">
+        <div><div class="text-5xl">🛒</div><h3 class="mt-4 font-semibold">Your cart is empty</h3><p class="mt-2 text-sm text-zinc-500">Add something you love.</p></div>
+      </div>
+    </div>
+
+    <div class="border-t border-zinc-200 p-6">
+      <div class="flex justify-between text-sm"><span class="text-zinc-500">Subtotal</span><strong id="cartTotal">$0.00</strong></div>
+      <p class="mt-2 text-xs text-zinc-400">Taxes and shipping calculated at checkout.</p>
+      <button class="mt-5 w-full rounded-xl bg-black text-white py-3.5 font-semibold hover:bg-zinc-800">Checkout →</button>
+    </div>
+  </aside>
+
+  <script>
+    const products = [
+      {id:1,name:"Relaxed Wool Coat",price:189,image:"https://images.unsplash.com/photo-1539533018447-63fcce2678e1?auto=format&fit=crop&w=800&q=85",cat:"outerwear",tag:"New"},
+      {id:2,name:"Essential Overshirt",price:89,image:"https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=85",cat:"tops",tag:"New"},
+      {id:3,name:"Straight Denim",price:79,image:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=85",cat:"bottoms",tag:""},
+      {id:4,name:"Heavyweight Tee",price:49,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85",cat:"tops",tag:"Best seller"},
+      {id:5,name:"Minimal Blazer",price:149,image:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=85",cat:"outerwear",tag:""},
+      {id:6,name:"Wide Leg Trouser",price:95,image:"https://images.unsplash.com/photo-1506629905607-d9a3f4e4e2e0?auto=format&fit=crop&w=800&q=85",cat:"bottoms",tag:"New"},
+      {id:7,name:"Cotton Knit",price:69,image:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85",cat:"tops",tag:""},
+      {id:8,name:"Everyday Jacket",price:119,image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85",cat:"outerwear",tag:""}
+    ];
+
+    let cart = [];
+    let activeFilter = "all";
+
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      const list = activeFilter === "all" ? products : products.filter(p => p.cat === activeFilter);
+
+      grid.innerHTML = list.map(p => `
+        <article class="product-card group">
+          <div class="relative overflow-hidden rounded-2xl bg-zinc-100 aspect-[.78]">
+            <img src="${p.image}" alt="${p.name}" class="product-img w-full h-full object-cover">
+            ${p.tag ? `<span class="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide">${p.tag}</span>` : ""}
+            <button onclick="addToCart(${p.id})" class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur rounded-xl py-3 text-sm font-semibold opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition duration-300">
+              + Add to cart
+            </button>
+          </div>
+          <div class="pt-4 flex justify-between gap-3">
+            <div><h3 class="text-sm font-medium">${p.name}</h3><p class="mt-1 text-xs text-zinc-500 capitalize">${p.cat}</p></div>
+            <strong class="text-sm">$${p.price}</strong>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      const item = cart.find(i => i.id === id);
+      if (item) item.qty++;
+      else cart.push({...product, qty:1});
+      updateCart();
+      openCart();
+    }
+
+    function changeQty(id, amount) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += amount;
+      if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+      updateCart();
+    }
+
+    function updateCart() {
+      const items = document.getElementById("cartItems");
+      const empty = document.getElementById("emptyCart");
+      const count = cart.reduce((sum,i) => sum+i.qty, 0);
+      const total = cart.reduce((sum,i) => sum+i.price*i.qty, 0);
+
+      document.getElementById("cartCount").textContent = count;
+      document.getElementById("cartSubtitle").textContent = `${count} item${count === 1 ? "" : "s"}`;
+      document.getElementById("cartTotal").textContent = `$${total.toFixed(2)}`;
+
+      if (!cart.length) {
+        items.innerHTML = "";
+        items.appendChild(empty);
+        return;
+      }
+
+      items.innerHTML = cart.map(i => `
+        <div class="flex gap-4">
+          <img src="${i.image}" class="w-20 h-24 rounded-xl object-cover bg-zinc-100">
+          <div class="flex-1">
+            <div class="flex justify-between gap-3">
+              <h4 class="text-sm font-medium">${i.name}</h4>
+              <strong class="text-sm">$${(i.price*i.qty).toFixed(2)}</strong>
+            </div>
+            <p class="text-xs text-zinc-500 mt-1">$${i.price} each</p>
+            <div class="mt-4 inline-flex items-center rounded-lg bg-zinc-100">
+              <button onclick="changeQty(${i.id},-1)" class="w-8 h-8">−</button>
+              <span class="w-8 text-center text-sm">${i.qty}</span>
+              <button onclick="changeQty(${i.id},1)" class="w-8 h-8">+</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function openCart() {
+      document.getElementById("cartDrawer").classList.remove("translate-x-full");
+      document.getElementById("cartOverlay").classList.remove("opacity-0","pointer-events-none");
+    }
+    function closeCart() {
+      document.getElementById("cartDrawer").classList.add("translate-x-full");
+      document.getElementById("cartOverlay").classList.add("opacity-0","pointer-events-none");
+    }
+
+    // Slider
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(index) {
+      slideIndex = (index + slides.length) % slides.length;
+      slides.forEach((s,i) => s.classList.toggle("active", i === slideIndex));
+      dots.forEach((d,i) => {
+        d.classList.toggle("w-8", i === slideIndex);
+        d.classList.toggle("w-2", i !== slideIndex);
+        d.classList.toggle("bg-white", i === slideIndex);
+        d.classList.toggle("bg-white/50", i !== slideIndex);
+      });
+    }
+    document.getElementById("next").onclick = () => showSlide(slideIndex+1);
+    document.getElementById("prev").onclick = () => showSlide(slideIndex-1);
+    dots.forEach((d,i) => d.onclick = () => showSlide(i));
+    setInterval(() => showSlide(slideIndex+1), 5500);
+
+    // Filters
+    document.querySelectorAll(".filter").forEach(btn => {
+      btn.onclick = () => {
+        activeFilter = btn.dataset.filter;
+        document.querySelectorAll(".filter").forEach(b => {
+          b.classList.remove("bg-black","text-white");
+          b.classList.add("bg-zinc-100");
+        });
+        btn.classList.add("bg-black","text-white");
+        btn.classList.remove("bg-zinc-100");
+        renderProducts();
+      };
+    });
+
+    // Cart events
+    document.getElementById("cartBtn").onclick = openCart;
+    document.getElementById("closeCart").onclick = closeCart;
+    document.getElementById("cartOverlay").onclick = closeCart;
+
+    // Mobile nav
+    document.getElementById("mobileMenuBtn").onclick = () => {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    };
+
+    renderProducts();
+    updateCart();
+  </script>
+</body>
+</html>
